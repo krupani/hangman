@@ -50,7 +50,7 @@ function renderWord() {
 
 function renderKeyboard() {
   const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
-  const layout = [letters.slice(0, 9), letters.slice(9, 18), letters.slice(18)];
+  const layout = [letters.slice(0, 7), letters.slice(7, 14), letters.slice(14,20), letters.slice(20)];
 
   const keyboard = document.getElementById("keyboard");
   keyboard.innerHTML = "";
