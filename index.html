@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>2-Player Hangman</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="yellow-theme">
+  <div id="scoreboard">
+    <span id="scoreP1">Player 1: 0</span>
+    <span id="scoreP2">Player 2: 0</span>
+  </div>
+
+  <div id="landing" class="screen active">
+    <h1>2-Player Hangman</h1>
+    <input type="text" id="player1Name" placeholder="Player 1 Name" />
+    <input type="text" id="player2Name" placeholder="Player 2 Name" />
+    <button onclick="startGame()">Start</button>
+  </div>
+
+  <div id="wordEntry" class="screen">
+    <h2 id="wordEntryPrompt">Player X, enter a word</h2>
+    <input type="password" id="secretWord" />
+    <button onclick="submitWord()">Play</button>
+  </div>
+
+  <div id="gameplay" class="screen">
+    <h2 id="turnInfo">Player X is guessing</h2>
+    <div id="wordDisplay"></div>
+    <div id="keyboard"></div>
+    <div id="hangman-container">
+      <svg id="hangman" width="200" height="250">
+        <!-- Gallows -->
+        <line id="base" x1="20" y1="230" x2="180" y2="230" stroke="#000" stroke-width="4" visibility="hidden"/>
+        <line id="pole" x1="50" y1="230" x2="50" y2="20" stroke="#000" stroke-width="4" visibility="hidden"/>
+        <line id="beam" x1="50" y1="20" x2="130" y2="20" stroke="#000" stroke-width="4" visibility="hidden"/>
+        <line id="rope" x1="130" y1="20" x2="130" y2="50" stroke="#000" stroke-width="2" visibility="hidden"/>
+        <!-- Hangman -->
+        <circle id="head" cx="130" cy="70" r="20" stroke="#000" stroke-width="3" fill="none" visibility="hidden"/>
+        <line id="body" x1="130" y1="90" x2="130" y2="150" stroke="#000" stroke-width="3" visibility="hidden"/>
+        <line id="leftArm" x1="130" y1="110" x2="100" y2="130" stroke="#000" stroke-width="3" visibility="hidden"/>
+        <line id="rightArm" x1="130" y1="110" x2="160" y2="130" stroke="#000" stroke-width="3" visibility="hidden"/>
+        <line id="leftLeg" x1="130" y1="150" x2="110" y2="190" stroke="#000" stroke-width="3" visibility="hidden"/>
+        <line id="rightLeg" x1="130" y1="150" x2="150" y2="190" stroke="#000" stroke-width="3" visibility="hidden"/>
+      </svg>
+    </div>
+  </div>
+
+  <div id="overlay">
+    <div id="overlayContent">
+      <p id="resultMessage"></p>
+      <p>The word was: <span id="revealedWord"></span></p>
+      <button onclick="nextTurn()">Next</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
