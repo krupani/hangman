@@ -44,13 +44,25 @@ function submitWord() {
 }
 
 function renderWord() {
-  let display = secretWord.split("").map(letter => guessed.includes(letter) ? letter : "_").join(" ");
-  document.getElementById("wordDisplay").innerText = display;
+  const wordDisplay = document.getElementById("wordDisplay");
+  wordDisplay.innerHTML = ''; // Clear the previous content
+
+  secretWord.split("").forEach(char => {
+    const span = document.createElement("span");
+    if (/[a-zA-Z]/.test(char)) {
+      span.textContent = guessed.includes(char) ? char : "_";
+    } else if (char === " ") {
+      span.textContent = " ";
+    } else {
+      span.textContent = char;
+    }
+    wordDisplay.appendChild(span);
+  });
 }
 
 function renderKeyboard() {
   const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
-  const layout = [letters.slice(0, 7), letters.slice(7, 14), letters.slice(14,20), letters.slice(20)];
+  const layout = [letters.slice(0, 7), letters.slice(7, 14), letters.slice(14, 20), letters.slice(20)];
 
   const keyboard = document.getElementById("keyboard");
   keyboard.innerHTML = "";
@@ -83,7 +95,9 @@ function handleGuess(letter, key) {
 }
 
 function checkGameStatus() {
-  const wordGuessed = secretWord.split("").every(l => guessed.includes(l));
+  const wordGuessed = secretWord.split("").every(char => {
+    return !/[a-zA-Z]/.test(char) || guessed.includes(char);
+  });
   if (wordGuessed) {
     scores[currentPlayer === "p1" ? "p2" : "p1"]++;
     showOverlay("Correct!");

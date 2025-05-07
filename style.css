@@ -89,6 +89,10 @@ button {
   letter-spacing: 10px;
 }
 
+#wordDisplay span {
+  margin: 0, 5px
+}
+
 #hangman-container {
   margin-top: 40px;
   position: relative;
