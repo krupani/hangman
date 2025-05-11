@@ -10,16 +10,26 @@ body {
   padding: 0;
 }
 
+.container {
+  background-color: #FFFFFF;
+  max-width: 500px;
+  max-height: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 500px rgba(0, 0, 0, 0.2);
+}
+
 .yellow-theme {
-  background: linear-gradient(to bottom right, #fff7cc, #ffe66d);
+  background-color: #F2F2F2;
 }
 
 .player1-theme {
-  background: linear-gradient(to bottom right, #d2f1ff, #a4e1ff);
+  background-color: #a4e1ff;
 }
 
 .player2-theme {
-  background: linear-gradient(to bottom right, #d4fcd3, #9effa4);
+  background-color: #9effa4;
 }
 
 .screen {
@@ -42,6 +52,8 @@ button {
   font-size: 1em;
   margin: 10px;
   cursor: pointer;
+  background-color: #ffe66d;
+  border-radius: 10px;
 }
 
 #scoreboard {
